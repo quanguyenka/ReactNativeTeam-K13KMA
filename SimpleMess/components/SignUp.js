@@ -17,12 +17,6 @@ export default class SignUp extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <KeyboardAwareScrollView
-                    style={{ width: "100%", marginTop: 40, height: "60%" }}
-                    resetScrollToCoords={{ x: 0, y: 0 }}
-                    scrollEnabled={false}
-                    contentContainerStyle={{alignContent: "center"}}
-                >
                     <TextInput
                         style={styles.textInput}
                         placeholder="Username"
@@ -43,7 +37,6 @@ export default class SignUp extends Component {
                         placeholder="Password again"
                         placeholderTextColor="#85D7E1"
                     />
-                </KeyboardAwareScrollView>
 
                 <View style={{ height: "30%" }}>
                     <TouchableHighlight style={styles.signUpButton}>
@@ -52,7 +45,7 @@ export default class SignUp extends Component {
                         </Text>
                     </TouchableHighlight>
                 </View>
-                <View style={{ height: "13%" }}>
+                <View style={styles.accountNotExistWrapper}>
                     <Text style={styles.accountNotExist}>
                     BE SIGNING UP I AGREE TO THE 
                             THERME OF USE
@@ -82,12 +75,13 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     textInput: {
-        height: 40,
+        padding: 5,
         borderColor: 'gray',
         width: "80%",
         borderBottomWidth: 2,
         borderBottomColor: "#85D7E1",
-        fontSize: 20
+        fontSize: 20,
+        margin: 10
     },
     signUpButton: {
         padding: 15,
@@ -106,11 +100,12 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textTransform: "uppercase",
     },
+    accountNotExistWrapper: {
+        marginBottom: 30,
+    },
     accountNotExist: {
         textTransform: "uppercase",
         fontSize: 16,
         color: "#fff",
-        marginBottom: 30,
-        marginTop: 40
     },
 });
