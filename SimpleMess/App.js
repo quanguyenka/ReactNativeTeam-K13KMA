@@ -23,7 +23,7 @@ class App extends Component {
           style={styles.buttonSignInWrapper}
           underlayColor='#fff'>
             <Text style={styles.textInSignInButton}>
-              Sign Up
+              Sign In
             </Text>
         </TouchableHighlight>
         <TouchableHighlight

@@ -106,6 +106,6 @@ const styles = StyleSheet.create({
     accountNotExist: {
         textTransform: "uppercase",
         fontSize: 16,
-        color: "#fff",
+        color: "#fff"
     },
 });
