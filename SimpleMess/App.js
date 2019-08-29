@@ -1,114 +1,102 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React, { Component } from 'react';
+import { Text, View, Image, StyleSheet, Button, TouchableHighlight } from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import SignIn from './components/SignIn.js';
+import SignUp from './components/SignUp.js';
 
-import React, {Fragment} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+class App extends Component {
+  navigateToSignIn() {
+    this.props.navigation.navigate("SignIn");
+  }
+  navigateToSignUp() {
+    this.props.navigation.navigate("SignUp");
+  }
+  render() {
+    return(
+      <View style={styles.container}>
+        <Image
+          style={styles.backgroundImage}
+          source={require('./images/logo3.png')}
+        />
+        <TouchableHighlight
+          onPress={this.navigateToSignIn.bind(this)}
+          style={styles.buttonSignInWrapper}
+          underlayColor='#fff'>
+            <Text style={styles.textInSignInButton}>
+              Sign Up
+            </Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          onPress={this.navigateToSignUp.bind(this)}
+          style={styles.buttonSignUpWrapper}
+          underlayColor='#fff'>
+            <Text style={styles.textInSignUpButton}>
+              Sign Up
+            </Text>
+        </TouchableHighlight>
+      </View>
+    );
+  }
+}
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const AppNavigator = createStackNavigator(
+  {
+    App: App,
+    SignIn: SignIn,
+    SignUp: SignUp
+  },
+  {
+    initialRoute: "App",
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "#00ACC1"
+      }
+    }
+  }
+)
 
-const App = () => {
-  return (
-    <Fragment>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </Fragment>
-  );
-};
+export default createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#00ACC1",
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  backgroundImage: {
+    width: 210,
+    height: 230
   },
-  body: {
-    backgroundColor: Colors.white,
+  buttonSignInWrapper: {
+    width: 250,
+    padding: 15,
+    backgroundColor:'#fff',
+    borderRadius: 40,
+    borderWidth: 1,
+    borderColor: '#fff',
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 20
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  textInSignInButton: {    
+    color: "#00A0B3", 
+    textTransform: "uppercase",
+    fontWeight: "bold"
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
+  buttonSignUpWrapper:{
+    width: 250,
+    padding: 15,
+    backgroundColor:'#00A0B3',
+    borderRadius: 40,
+    borderWidth: 1,
+    borderColor: '#fff',
+    justifyContent: "center",
+    alignItems: "center"
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
+  textInSignUpButton: {
+    color: "#FFF", 
+    textTransform: "uppercase",
+    fontWeight: "bold"
   },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
-
-export default App;
+})
