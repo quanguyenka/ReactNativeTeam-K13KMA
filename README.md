@@ -14,7 +14,7 @@ SV1: Phạm Hữu Thưởng (0392380773)
 
 SV2: Lê Quang Nguyên
 
-Sv2: Nguyễn Thị Xưa
+SV3: Nguyễn Thị Xưa
 
 ### Nội Dung:
 Sử dụng ReactNative để xây dựng app chat realtime
