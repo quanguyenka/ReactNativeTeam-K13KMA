@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     welcomeText: {
         color: "#00A0B3",
         fontSize: 18,
-        textTransform: "uppercase"
+        textTransform: "uppercase",
+        fontWeight: "bold"
     }
 });

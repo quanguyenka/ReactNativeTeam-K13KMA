@@ -42,8 +42,8 @@ class App extends Component {
 
 const AppNavigator = createStackNavigator(
   {
-    App: App,
     SignIn: SignIn,
+    App: App,
     SignUp: SignUp,
     SignSuccess: SignSuccess,
   },

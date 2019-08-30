@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, StyleSheet } from 'react-native';
+import { Text, View, TextInput, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
@@ -20,9 +20,11 @@ export default class SignIn extends Component {
         password: '',
     }
 
-    navigateToSignSuccessPage() {
+    navigateToSignSuccessPage = () => {
         if(this.state.username == "aa" && this.state.password == "aa") {
             this.props.navigation.navigate("SignSuccess");
+            this.setState({username: ""});
+            this.setState({password: ""})
         } else {
             alert("Username or password wrong");
         }
@@ -65,14 +67,14 @@ export default class SignIn extends Component {
                 </KeyboardAwareScrollView>
                 
                 <View style={{height: "30%"}}>
-                    <TouchableHighlight 
+                    <TouchableOpacity 
                         style={styles.signInButton}
-                        onPress={this.navigateToSignUpPage.bind(this)}
+                        onPress={this.navigateToSignSuccessPage.bind(this)}
                     >
                         <Text style={styles.signInButtonText}>
                             Sign In
                         </Text>
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={{height: "13%"}}>
