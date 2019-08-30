@@ -3,12 +3,13 @@ import { Text, View, Image, StyleSheet, Button, TouchableHighlight } from 'react
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import SignIn from './components/SignIn.js';
 import SignUp from './components/SignUp.js';
+import SignSuccess from './components/SignSuccess.js';
 
 class App extends Component {
-  navigateToSignIn() {
+  navigateToSignInPage() {
     this.props.navigation.navigate("SignIn");
   }
-  navigateToSignUp() {
+  navigateToSignUpPage() {
     this.props.navigation.navigate("SignUp");
   }
   render() {
@@ -19,7 +20,7 @@ class App extends Component {
           source={require('./images/logo3.png')}
         />
         <TouchableHighlight
-          onPress={this.navigateToSignIn.bind(this)}
+          onPress={this.navigateToSignInPage.bind(this)}
           style={styles.buttonSignInWrapper}
           underlayColor='#fff'>
             <Text style={styles.textInSignInButton}>
@@ -27,7 +28,7 @@ class App extends Component {
             </Text>
         </TouchableHighlight>
         <TouchableHighlight
-          onPress={this.navigateToSignUp.bind(this)}
+          onPress={this.navigateToSignUpPage.bind(this)}
           style={styles.buttonSignUpWrapper}
           underlayColor='#fff'>
             <Text style={styles.textInSignUpButton}>
@@ -43,7 +44,8 @@ const AppNavigator = createStackNavigator(
   {
     App: App,
     SignIn: SignIn,
-    SignUp: SignUp
+    SignUp: SignUp,
+    SignSuccess: SignSuccess,
   },
   {
     initialRoute: "App",

@@ -14,6 +14,28 @@ export default class SignIn extends Component {
         fontWeight: 'bold',
       },
     };
+
+    state = {
+        username: '',
+        password: '',
+    }
+
+    navigateToSignSuccessPage() {
+        if(this.state.username == "aa" && this.state.password == "aa") {
+            this.props.navigation.navigate("SignSuccess");
+        } else {
+            alert("Username or password wrong");
+        }
+    }
+    navigateToSignUpPage() {
+        this.props.navigation.navigate("SignUp");
+    }
+    handlerUsername = (username) => {
+        this.setState({username: username});
+    }
+    handlerPassword = (password) => {
+        this.setState({password: password})
+    }
     render() {
         return(
             <View style={styles.container}>
@@ -28,27 +50,36 @@ export default class SignIn extends Component {
                             style={styles.textInput}
                             placeholder="Username"
                             placeholderTextColor="#85D7E1"
-                            
+                            onChangeText ={this.handlerUsername.bind(this)}
                         />
                     </View>
                     <View style={styles.textInputWrapper}>
                         <TextInput
+                            secureTextEntry={true}
                             style={styles.textInput}
                             placeholder="Password"
                             placeholderTextColor="#85D7E1"
+                            onChangeText={this.handlerPassword.bind(this)}
                         />
                     </View>
                 </KeyboardAwareScrollView>
                 
                 <View style={{height: "30%"}}>
-                    <TouchableHighlight style={styles.signInButton}>
+                    <TouchableHighlight 
+                        style={styles.signInButton}
+                        onPress={this.navigateToSignUpPage.bind(this)}
+                    >
                         <Text style={styles.signInButtonText}>
                             Sign In
                         </Text>
                     </TouchableHighlight>
                 </View>
+
                 <View style={{height: "13%"}}>
-                    <Text style={styles.accountNotExist}>
+                    <Text 
+                        style={styles.accountNotExist}
+                        onPress={this.navigateToSignUpPage.bind(this)}
+                    >
                         Don't have an account?
                     </Text>
                 </View>
