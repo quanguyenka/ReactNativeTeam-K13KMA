@@ -4,6 +4,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import SignIn from './components/SignIn.js';
 import SignUp from './components/SignUp.js';
 import SignSuccess from './components/SignSuccess.js';
+import Drawer from './components/navigators/Drawer.js';
 
 class App extends Component {
   navigateToSignInPage() {
@@ -42,6 +43,7 @@ class App extends Component {
 
 const AppNavigator = createStackNavigator(
   {
+    Drawer: Drawer,
     SignIn: SignIn,
     App: App,
     SignUp: SignUp,
